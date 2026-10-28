@@ -6,5 +6,5 @@ Week 1
 - Implemented database models and migrations.
 - Developed organization management (CRUD).
 - Developed user management (CRUD).
-- Implemented document upload and storage.
+- Started implmenting document upload and storage.
 - Tested API endpoints using Postman.
