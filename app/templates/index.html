@@ -1,52 +1,227 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document Management System</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 40px;
+            margin: 0;
+            padding: 40px 20px;
             background: #f4f6f9;
+            color: #333;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 950px;
             margin: auto;
             background: white;
-            padding: 30px;
+            padding: 35px;
             border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
 
-        h1 { color: #243b55; }
+        h1, h2 {
+            color: #243b55;
+        }
 
-        li { margin: 10px 0; }
+        h1 {
+            margin-bottom: 10px;
+        }
 
-        .status { color: green; }
+        h2 {
+            margin-top: 30px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .status {
+            color: #16803c;
+            font-weight: bold;
+        }
+
+        .base-url {
+            background: #eef2f7;
+            padding: 12px;
+            border-radius: 5px;
+            overflow-wrap: anywhere;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #243b55;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f4f6f9;
+        }
+
+        code {
+            color: #243b55;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 35px;
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+        }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Document Management System</h1>
 
-        <p>
-            A system that helps businesses store, organize,
-            search, and securely access documents online.
-        </p>
+<div class="container">
 
-        <h2>Project Progress</h2>
+    <h1>Document Management System</h1>
 
-        <ul>
-            <li>Project environment setup – Completed</li>
-            <li>Database models – Completed</li>
-            <li>Organization CRUD – Implemented</li>
-            <li>User CRUD – Implemented</li>
-            <li>Document upload – In progress</li>
-        </ul>
+    <p>
+        A system that helps businesses store, organize, search,
+        and securely access documents online.
+    </p>
 
-        <h2>Deployment Status</h2>
-        <p class="status">Application deployed successfully.</p>
-        <p class="status">MySQL database connected successfully.</p>
-    </div>
+    <h2>Project Progress</h2>
+
+    <ul>
+        <li>Project environment setup – Completed</li>
+        <li>Database models – Completed</li>
+        <li>Organization CRUD – Implemented</li>
+        <li>User CRUD – Implemented</li>
+        <li>Document upload API – Implemented</li>
+    </ul>
+
+    <h2>Deployment Status</h2>
+
+    <p class="status">Application deployed successfully.</p>
+    <p class="status">MySQL database connected successfully.</p>
+
+    <h2>API Documentation</h2>
+
+    <p>
+        The following endpoints are available for interacting
+        with the Document Management System API.
+    </p>
+
+    <p class="base-url">
+        <strong>Base URL:</strong><br>
+        https://document-management-system-uls2.onrender.com
+    </p>
+
+    <h3>1. Organization Endpoints</h3>
+
+    <table>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td><code>/organizations/</code></td>
+            <td>Create an organization</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td><code>/organizations/</code></td>
+            <td>Get all organizations</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td><code>/organizations/{org_id}</code></td>
+            <td>Get one organization</td>
+        </tr>
+        <tr>
+            <td>PUT</td>
+            <td><code>/organizations/{org_id}</code></td>
+            <td>Update an organization</td>
+        </tr>
+        <tr>
+            <td>DELETE</td>
+            <td><code>/organizations/{org_id}</code></td>
+            <td>Delete an organization</td>
+        </tr>
+    </table>
+
+    <h3>2. User Endpoints</h3>
+
+    <table>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td><code>/users/</code></td>
+            <td>Create a user</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td><code>/users/</code></td>
+            <td>Get all users</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td><code>/users/{user_id}</code></td>
+            <td>Get one user</td>
+        </tr>
+        <tr>
+            <td>PUT</td>
+            <td><code>/users/{user_id}</code></td>
+            <td>Update a user</td>
+        </tr>
+        <tr>
+            <td>DELETE</td>
+            <td><code>/users/{user_id}</code></td>
+            <td>Delete a user</td>
+        </tr>
+    </table>
+
+    <h3>3. Document Endpoints</h3>
+
+    <table>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td><code>/documents/upload</code></td>
+            <td>Upload a document</td>
+        </tr>
+    </table>
+
+    <h2>How to Test the API</h2>
+
+    <p>
+        Use Postman or another API client to send GET, POST, PUT,
+        and DELETE requests to the endpoints above.
+    </p>
+
+    <footer>
+        Document Management System | API Project
+    </footer>
+
+</div>
+
 </body>
 </html>
