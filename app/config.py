@@ -16,9 +16,20 @@ class Config:
         f"{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
     )
 
+    BASE_DIR = Path(__file__).resolve().parent.parent
+
+    DB_SSL_CA = str(BASE_DIR / "certificates" / "ca.pem")
+
+    SQLALCHEMY_ENGINE_OPTIONS = {
+        "connect_args": {
+            "ssl": {
+                "ca": DB_SSL_CA
+            }
+        }
+    }
+
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    BASE_DIR = Path(__file__).resolve().parent.parent
     UPLOAD_FOLDER = str(BASE_DIR / "uploads")
 
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024
