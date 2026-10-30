@@ -6,6 +6,7 @@ from app import models
 from app.routes.organization_routes import organization_bp
 from app.routes.user_routes import user_bp
 from app.routes.document_routes import document_bp
+from flask import Flask, render_template
 
 def create_app():
     app = Flask(__name__)
@@ -19,7 +20,7 @@ def create_app():
 
     @app.route("/")
     def home():
-        return "Document Management System API is running!"
+        return render_template("index.html")
 
     @app.route("/test-db")
     def test_db():
