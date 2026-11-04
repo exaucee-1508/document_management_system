@@ -7,6 +7,7 @@ load_dotenv()
 
 class Config:
     SECRET_KEY = os.getenv("SECRET_KEY")
+    JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
 
     password = quote_plus(os.getenv("DB_PASSWORD", ""))
 
@@ -20,13 +21,16 @@ class Config:
 
     DB_SSL_CA = str(BASE_DIR / "certificates" / "ca.pem")
 
-    SQLALCHEMY_ENGINE_OPTIONS = {
-        "connect_args": {
-            "ssl": {
-                "ca": DB_SSL_CA
+    SQLALCHEMY_ENGINE_OPTIONS = {}
+
+    if os.getenv("DB_HOST") != "localhost":
+        SQLALCHEMY_ENGINE_OPTIONS = {
+            "connect_args": {
+                "ssl": {
+                    "ca": DB_SSL_CA
+                }
             }
         }
-    }
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 

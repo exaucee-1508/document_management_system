@@ -17,6 +17,7 @@ class Permission(db.Model):
     can_view = db.Column(db.Boolean, default=True, nullable=False)
     can_edit = db.Column(db.Boolean, default=False, nullable=False)
     can_delete = db.Column(db.Boolean, default=False, nullable=False)
+    can_download = db.Column(db.Boolean, default=False)
 
     __table_args__ = (
         db.UniqueConstraint("user_id", "document_id"),

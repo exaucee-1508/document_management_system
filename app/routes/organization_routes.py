@@ -28,7 +28,8 @@ def create_organization():
         "id": organization.id,
         "name": organization.name,
         "email": organization.email,
-        "created_at": organization.created_at.isoformat()
+        "created_at": organization.created_at.isoformat(),
+        "message": "Organization created successfully"
     }), 201
 
 @organization_bp.route("/", methods=["GET"])
@@ -79,7 +80,9 @@ def update_organization(org_id):
     return jsonify({
         "id": organization.id,
         "name": organization.name,
-        "email": organization.email
+        "email": organization.email,
+        "created_at": organization.created_at.isoformat(),
+        "message": "Organization updated successfully"
     }), 200
 
 @organization_bp.route("/<int:org_id>", methods=["DELETE"])

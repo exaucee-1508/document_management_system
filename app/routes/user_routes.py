@@ -14,12 +14,19 @@ def create_user():
                            ["organization_id", "name", "email", "password"]):
         return jsonify({"error": "All fields are required"}), 400
 
+    role = data.get("role", "member")
+
+    if role not in ["member", "admin"]:
+        return jsonify({
+            "error": "Invalid role. Only 'member' and 'admin' are allowed."
+        }), 400
+
     user = User(
         organization_id=data["organization_id"],
         name=data["name"],
         email=data["email"],
         password_hash=generate_password_hash(data["password"]),
-        role=data.get("role", "member")
+        role=role
     )
 
     db.session.add(user)
@@ -31,7 +38,8 @@ def create_user():
         "name": user.name,
         "email": user.email,
         "role": user.role,
-        "created_at": user.created_at.isoformat()
+        "created_at": user.created_at.isoformat(),
+        "message": "User created successfully"
     }), 201
 
 @user_bp.route("/", methods=["GET"])
@@ -78,6 +86,11 @@ def update_user(user_id):
     if not data:
         return jsonify({"error": "Request body is required"}), 400
 
+    if "role" in data and data["role"] not in ["member", "admin"]:
+        return jsonify({
+            "error": "Invalid role. Only 'member' and 'admin' are allowed."
+        }), 400
+
     if "name" in data:
         user.name = data["name"]
 
@@ -95,7 +108,8 @@ def update_user(user_id):
         "name": user.name,
         "email": user.email,
         "role": user.role,
-        "created_at": user.created_at.isoformat()
+        "created_at": user.created_at.isoformat(),
+        "message": "User updated successfully"
     }), 200
 
 @user_bp.route("/<int:user_id>", methods=["DELETE"])
