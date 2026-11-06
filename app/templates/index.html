@@ -1,38 +1,42 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document Management System</title>
+    <title>Document Management System API</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 40px 20px;
-            background: #f4f6f9;
+            background-color: #f4f6f9;
             color: #333;
+            margin: 0;
+            padding: 30px 15px;
         }
 
         .container {
-            max-width: 950px;
+            max-width: 1000px;
             margin: auto;
             background: white;
-            padding: 35px;
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
-
-        h1, h2 {
-            color: #243b55;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
         }
 
         h1 {
+            color: #1f3c88;
+            text-align: center;
             margin-bottom: 10px;
         }
 
         h2 {
+            color: #1f3c88;
+            border-bottom: 2px solid #e5e9f2;
+            padding-bottom: 8px;
             margin-top: 30px;
         }
 
@@ -40,47 +44,90 @@
             line-height: 1.6;
         }
 
+        .description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
         .status {
-            color: #16803c;
-            font-weight: bold;
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .status p {
+            margin: 5px 0;
+            color: #256029;
         }
 
         .base-url {
-            background: #eef2f7;
-            padding: 12px;
-            border-radius: 5px;
+            background: #eef2ff;
+            padding: 15px;
+            border-radius: 6px;
             overflow-wrap: anywhere;
+        }
+
+        .base-url a {
+            color: #1f3c88;
+            font-weight: bold;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 12px;
+            margin-top: 15px;
+            min-width: 600px;
         }
 
         th, td {
-            border: 1px solid #ddd;
             padding: 12px;
+            border: 1px solid #ddd;
             text-align: left;
         }
 
         th {
-            background: #243b55;
+            background-color: #1f3c88;
             color: white;
         }
 
         tr:nth-child(even) {
-            background: #f4f6f9;
+            background-color: #f8f9fc;
         }
 
-        code {
-            color: #243b55;
+        .method {
             font-weight: bold;
         }
 
+        .post {
+            color: #198754;
+        }
+
+        .get {
+            color: #0d6efd;
+        }
+
+        .put {
+            color: #d97706;
+        }
+
+        .delete {
+            color: #dc3545;
+        }
+
+        .endpoint {
+            font-family: Consolas, monospace;
+            overflow-wrap: anywhere;
+        }
+
         footer {
-            margin-top: 35px;
             text-align: center;
+            margin-top: 35px;
             color: #777;
             font-size: 14px;
         }
@@ -91,9 +138,9 @@
 
 <div class="container">
 
-    <h1>Document Management System</h1>
+    <h1>Document Management System API</h1>
 
-    <p>
+    <p class="description">
         A system that helps businesses store, organize, search,
         and securely access documents online.
     </p>
@@ -101,124 +148,238 @@
     <h2>Project Progress</h2>
 
     <ul>
-        <li>Project environment setup – Completed</li>
-        <li>Database models – Completed</li>
-        <li>Organization CRUD – Implemented</li>
-        <li>User CRUD – Implemented</li>
-        <li>Document upload API – Implemented</li>
+        <li>Project environment setup</li>
+        <li>Database models implementation</li>
+        <li>Organization management (CRUD)</li>
+        <li>User management (CRUD)</li>
+        <li>Document upload and management</li>
+        <li>User authentication</li>
+        <li>Document permission management</li>
+        <li>Cloud deployment and database integration</li>
     </ul>
 
     <h2>Deployment Status</h2>
 
-    <p class="status">Application deployed successfully.</p>
-    <p class="status">MySQL database connected successfully.</p>
+    <div class="status">
+        <p>Application deployed successfully.</p>
+        <p>MySQL database connected successfully.</p>
+    </div>
 
-    <h2>API Documentation</h2>
+    <h2>API Base URL</h2>
 
-    <p>
-        The following endpoints are available for interacting
-        with the Document Management System API.
-    </p>
-
-    <p class="base-url">
-        <strong>Base URL:</strong><br>
-        https://document-management-system-uls2.onrender.com
-    </p>
-
-    <h3>1. Organization Endpoints</h3>
-
-    <table>
-        <tr>
-            <th>Method</th>
-            <th>Endpoint</th>
-            <th>Description</th>
-        </tr>
-        <tr>
-            <td>POST</td>
-            <td><code>/organizations/</code></td>
-            <td>Create an organization</td>
-        </tr>
-        <tr>
-            <td>GET</td>
-            <td><code>/organizations/</code></td>
-            <td>Get all organizations</td>
-        </tr>
-        <tr>
-            <td>GET</td>
-            <td><code>/organizations/{org_id}</code></td>
-            <td>Get one organization</td>
-        </tr>
-        <tr>
-            <td>PUT</td>
-            <td><code>/organizations/{org_id}</code></td>
-            <td>Update an organization</td>
-        </tr>
-        <tr>
-            <td>DELETE</td>
-            <td><code>/organizations/{org_id}</code></td>
-            <td>Delete an organization</td>
-        </tr>
-    </table>
-
-    <h3>2. User Endpoints</h3>
-
-    <table>
-        <tr>
-            <th>Method</th>
-            <th>Endpoint</th>
-            <th>Description</th>
-        </tr>
-        <tr>
-            <td>POST</td>
-            <td><code>/users/</code></td>
-            <td>Create a user</td>
-        </tr>
-        <tr>
-            <td>GET</td>
-            <td><code>/users/</code></td>
-            <td>Get all users</td>
-        </tr>
-        <tr>
-            <td>GET</td>
-            <td><code>/users/{user_id}</code></td>
-            <td>Get one user</td>
-        </tr>
-        <tr>
-            <td>PUT</td>
-            <td><code>/users/{user_id}</code></td>
-            <td>Update a user</td>
-        </tr>
-        <tr>
-            <td>DELETE</td>
-            <td><code>/users/{user_id}</code></td>
-            <td>Delete a user</td>
-        </tr>
-    </table>
-
-    <h3>3. Document Endpoints</h3>
-
-    <table>
-        <tr>
-            <th>Method</th>
-            <th>Endpoint</th>
-            <th>Description</th>
-        </tr>
-        <tr>
-            <td>POST</td>
-            <td><code>/documents/upload</code></td>
-            <td>Upload a document</td>
-        </tr>
-    </table>
-
-    <h2>How to Test the API</h2>
+    <div class="base-url">
+        <a href="https://document-management-system-uls2.onrender.com">
+            https://document-management-system-uls2.onrender.com
+        </a>
+    </div>
 
     <p>
-        Use Postman or another API client to send GET, POST, PUT,
-        and DELETE requests to the endpoints above.
+        The following endpoints can be tested using Postman
+        or another API testing tool.
     </p>
+
+    <h2>1. Organization Management</h2>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Endpoint</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="method post">POST</td>
+                    <td class="endpoint">/organizations/</td>
+                    <td>Create an organization</td>
+                </tr>
+                <tr>
+                    <td class="method get">GET</td>
+                    <td class="endpoint">/organizations/</td>
+                    <td>Retrieve all organizations</td>
+                </tr>
+                <tr>
+                    <td class="method get">GET</td>
+                    <td class="endpoint">/organizations/&lt;id&gt;</td>
+                    <td>Retrieve an organization by ID</td>
+                </tr>
+                <tr>
+                    <td class="method put">PUT</td>
+                    <td class="endpoint">/organizations/&lt;id&gt;</td>
+                    <td>Update an organization</td>
+                </tr>
+                <tr>
+                    <td class="method delete">DELETE</td>
+                    <td class="endpoint">/organizations/&lt;id&gt;</td>
+                    <td>Delete an organization</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>2. User Management</h2>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Endpoint</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="method post">POST</td>
+                    <td class="endpoint">/users/</td>
+                    <td>Create a user</td>
+                </tr>
+                <tr>
+                    <td class="method get">GET</td>
+                    <td class="endpoint">/users/</td>
+                    <td>Retrieve all users</td>
+                </tr>
+                <tr>
+                    <td class="method get">GET</td>
+                    <td class="endpoint">/users/&lt;id&gt;</td>
+                    <td>Retrieve a user by ID</td>
+                </tr>
+                <tr>
+                    <td class="method put">PUT</td>
+                    <td class="endpoint">/users/&lt;id&gt;</td>
+                    <td>Update a user</td>
+                </tr>
+                <tr>
+                    <td class="method delete">DELETE</td>
+                    <td class="endpoint">/users/&lt;id&gt;</td>
+                    <td>Delete a user</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>3. Document Management</h2>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Endpoint</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="method post">POST</td>
+                    <td class="endpoint">/documents/upload</td>
+                    <td>Upload a document</td>
+                </tr>
+                <tr>
+                    <td class="method get">GET</td>
+                    <td class="endpoint">/documents/</td>
+                    <td>Retrieve all documents</td>
+                </tr>
+                <tr>
+                    <td class="method get">GET</td>
+                    <td class="endpoint">/documents/&lt;id&gt;</td>
+                    <td>Retrieve a document by ID</td>
+                </tr>
+                <tr>
+                    <td class="method get">GET</td>
+                    <td class="endpoint">/documents/search</td>
+                    <td>Search documents by filename</td>
+                </tr>
+                <tr>
+                    <td class="method put">PUT</td>
+                    <td class="endpoint">/documents/&lt;id&gt;/replace</td>
+                    <td>Replace an existing document</td>
+                </tr>
+                <tr>
+                    <td class="method get">GET</td>
+                    <td class="endpoint">/documents/&lt;id&gt;/download</td>
+                    <td>Download a document</td>
+                </tr>
+                <tr>
+                    <td class="method get">GET</td>
+                    <td class="endpoint">/documents/&lt;id&gt;/view</td>
+                    <td>View a document in the browser</td>
+                </tr>
+                <tr>
+                    <td class="method delete">DELETE</td>
+                    <td class="endpoint">/documents/&lt;id&gt;</td>
+                    <td>Delete a document</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>4. Permission Management</h2>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Endpoint</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="method post">POST</td>
+                    <td class="endpoint">/permissions/</td>
+                    <td>Assign permissions to a user for a document</td>
+                </tr>
+                <tr>
+                    <td class="method get">GET</td>
+                    <td class="endpoint">/permissions/</td>
+                    <td>Retrieve all permission records</td>
+                </tr>
+                <tr>
+                    <td class="method get">GET</td>
+                    <td class="endpoint">/permissions/&lt;id&gt;</td>
+                    <td>Retrieve a permission record by ID</td>
+                </tr>
+                <tr>
+                    <td class="method put">PUT</td>
+                    <td class="endpoint">/permissions/&lt;id&gt;</td>
+                    <td>Update a permission record</td>
+                </tr>
+                <tr>
+                    <td class="method delete">DELETE</td>
+                    <td class="endpoint">/permissions/&lt;id&gt;</td>
+                    <td>Delete a permission record</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>5. Authentication</h2>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Endpoint</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="method post">POST</td>
+                    <td class="endpoint">/auth/login</td>
+                    <td>Authenticate a user and generate an access token</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <footer>
-        Document Management System | API Project
+        Document Management System API
     </footer>
 
 </div>
